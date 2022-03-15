@@ -45,7 +45,7 @@ docker push xxxxxxxxx.dkr.ecr.us-east-2.amazonaws.com/aws-ip-daemon:0.1
 ####  Deploy Daemonset Solution
 
 ```
-cd daemon
+cd samples
 kubectl -n kube-system apply -f aws-ip-daemon.yaml
 ```
 
@@ -54,7 +54,7 @@ kubectl -n kube-system apply -f aws-ip-daemon.yaml
 
 Deploy the sample multus workloads in samples direcory, use your account number in place of xxxxxxxxx, and test it. 
 ```
-$ cd sample
+$ cd samples
 $ kubectl create ns multus
 namespace/multus created
 $ kubectl -n multus apply -f multus-nad-wb.yaml
