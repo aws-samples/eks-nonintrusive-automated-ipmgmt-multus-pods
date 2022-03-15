@@ -61,6 +61,12 @@ $ kubectl -n multus apply -f multus-nad-wb.yaml
 networkattachmentdefinition.k8s.cni.cncf.io/ipvlan-multus created
 $ kubectl -n multus apply -f busybox-deployment.yaml
 deployment.apps/busybox-deployment created
+$ kubectl -n kube-system get po -o wide
+NAME                       READY   STATUS    RESTARTS   AGE     IP           NODE                                       NOMINATED NODE   READINESS GATES
+aws-ip-daemon-2lmk5        1/1     Running   0          39h     10.0.0.13    ip-10-0-0-176.us-east-2.compute.internal   <none>           <none>
+aws-ip-daemon-2wmqs        1/1     Running   0          39h     10.0.0.174   ip-10-0-0-48.us-east-2.compute.internal    <none>           <none>
+aws-ip-daemon-5tssn        1/1     Running   0          39h     10.0.0.216   ip-10-0-0-126.us-east-2.compute.internal   <none>           <none>
+aws-ip-daemon-sl69j        1/1     Running   0          39h     10.0.0.249   ip-10-0-0-81.us-east-2.compute.internal    <none>           <none>
 $ kubectl -n multus get po -o wide
 
 NAME                                  READY   STATUS    RESTARTS   AGE     IP           NODE                                       NOMINATED NODE   READINESS GATES
