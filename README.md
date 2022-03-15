@@ -5,9 +5,9 @@ For multus pods on EKS, primary pod interface is managed by VPC CNI, however sec
 
 The blog [Automated Multus pod IP management on EKS](https://github.com/aws-samples/eks-automated-ipmgmt-multus-pods) explains how we can use the initContainer or sideCar container to automate this whole process. This is an efficient and fast mechanism to handle the multus pod IP addresses in EKS environment per multus workload basis, however one needs to modify the helm chart for multus workloads and add this additinal container in the charts. Also this needs to be maintained per releases.
 
-This blog explains the procedure of automating this IP allocation with the help of a daemonset based solution, so that applications dont need to modify their helm charts and they can use deploy their IPVLAN based multus pods/charts in EKS ithout any change.  However this being a central solution, 
+This blog explains the procedure of automating this IP allocation with the help of a daemonset based solution, so that applications dont need to modify their helm charts and they can use deploy their IPVLAN based multus pods/charts in EKS ithout any change.  
 
-The solution might be slower to react, specially for a bigger cluster (1000+ pods, 20+ workers) than the [pod based initContainer & sidecar container](https://github.com/aws-samples/eks-automated-ipmgmt-multus-pods), as this solution scans for multus pods in EKS clusters and assigns the needed secondary IPs on the worker ENI.
+Note: The solution might be slower to react, specially for a bigger cluster (800+ pods, 20+ workers) than the [pod based initContainer & sidecar container](https://github.com/aws-samples/eks-automated-ipmgmt-multus-pods), as this solution scans for multus pods in EKS clusters and assigns the needed secondary IPs on the worker ENI. 
 
 ### Daemonset based solution:
 
@@ -91,6 +91,9 @@ $ kubectl -n multus delete -f busybox-deployment.yaml
 $ kubectl -n multus delete -f aws-ip-daemon.yaml
 $ kubectl delete ns multus
 ```
+
+## Conclusion
+This blogs shows how this daemonset can solve the pod routing in VPC for multus pods without any modification in the helm charts of the applications. The daemonset sample solution handles it in non-intruisive way. This sample can be further optimized for the speed and scalability by the users for the bigger deployments.
 
 ## Security
 
