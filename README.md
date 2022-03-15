@@ -44,6 +44,8 @@ docker push xxxxxxxxx.dkr.ecr.us-east-2.amazonaws.com/aws-ip-daemon:0.1
 
 ####  Deploy Daemonset Solution
 
+Please replace the xxxxxxxxx with your accout id and also choose the region where your ECR repository is.
+
 ```
 cd samples
 kubectl -n kube-system apply -f aws-ip-daemon.yaml
