@@ -101,7 +101,7 @@ $ kubectl delete ns multus
 ```
 
 ## Conclusion
-This blogs shows how this daemonset can solve the pod routing in VPC for multus pods without any modification in the helm charts of the applications. The daemonset sample solution handles it in non-intruisive way. This sample can be further optimized for the speed and scalability by the users for the bigger deployments.
+This blogs shows how this daemonset can solve the multus based pod routing in VPC, without any modification in the helm charts of the applications. The daemonset sample solution handles it in non-intruisive way. This sample can be further optimized for the speed and scalability by the users for the bigger deployments.
 
 ## Security
 
